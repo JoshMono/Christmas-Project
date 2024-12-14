@@ -1,0 +1,36 @@
+<html>
+
+    <body>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+
+            </tr>
+            {% for person in people %}
+            <tr>
+                <td>
+                    {{person.first_name}}
+                </td>
+                <td>
+                    {{person.last_name}}
+                </td>
+                <td>
+                    {{person.email}}
+                </td>
+                <td>
+                    <a href="/edit_person/{{person.id}}">edit</a>
+                </td>
+                <td>
+                    <a href="/delete_person/{{person.id}}">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        <a href="/create_person">Create</a>
+            
+    </body>
+
+</html>

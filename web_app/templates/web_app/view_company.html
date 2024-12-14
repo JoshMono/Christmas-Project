@@ -1,0 +1,53 @@
+<html>
+
+<body>
+    <h2>Company</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Industry</th>
+
+        </tr>
+        <tr>
+            <td>
+                {{company.name}}
+            </td>
+            <td>
+                {{company.get_industry_display}}
+            </td>
+        </tr>
+    </table>
+
+    
+    <h2>People</h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+
+        </tr>
+        {% for person in people %}
+        <tr>
+            <td>
+                {{person.first_name}}
+            </td>
+            <td>
+                {{person.last_name}}
+            </td>
+            <td>
+                {{person.email}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ link_person_to_company_form }}
+        <button type="submit">Add</button>
+    </form>
+    
+
+</body>
+
+</html>

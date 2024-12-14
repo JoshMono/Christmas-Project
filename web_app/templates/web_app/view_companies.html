@@ -1,0 +1,36 @@
+<html>
+
+    <body>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Industry</th>
+
+            </tr>
+            {% for company in companies %}
+            <tr>
+                <td>
+                    {{company.name}}
+                </td>
+                <td>
+                    {{company.get_industry_display}}
+                </td>
+                
+                <td>
+                    <a href="/view_company/{{company.id}}">view</a>
+                </td>
+                <td>
+                    <a href="/edit_company/{{company.id}}">edit</a>
+                </td>
+                <td>
+                    <a href="/delete_company/{{company.id}}">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        <a href="/create_company">Create</a>
+            
+    </body>
+
+</html>
