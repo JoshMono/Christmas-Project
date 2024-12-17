@@ -1,6 +1,12 @@
-<html>
+{% extends 'web_app/layout.html' %}
 
-    <body>
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
         <table>
             <tr>
                 <th>Name</th>
@@ -30,7 +36,6 @@
             
         </table>
         <a href="/create_company">Create</a>
-            
-    </body>
 
-</html>
+
+{% endblock %}

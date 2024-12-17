@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'web_app/css/style.css' %}"/>
+</head>
+
+<body>
+    <!-- Nav Bar -->
+    <nav class="navigationBar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'view_people' %}">View People</a></li>
+            <li><a href="{% url 'view_companies' %}">View Companies</a></li>
+            <li style="float: right;"><a  href="{% url 'view_companies' %}">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+
+</body>
+

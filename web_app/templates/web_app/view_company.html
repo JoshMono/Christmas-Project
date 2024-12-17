@@ -1,6 +1,12 @@
-<html>
+{% extends 'web_app/layout.html' %}
 
-<body>
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
     <h2>Company</h2>
     <table>
         <tr>
@@ -46,8 +52,6 @@
         {{ link_person_to_company_form }}
         <button type="submit">Add</button>
     </form>
-    
 
-</body>
 
-</html>
+{% endblock %}
