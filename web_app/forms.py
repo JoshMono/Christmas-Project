@@ -18,8 +18,8 @@ class CreatePersonForm(ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        if len(cleaned_data.get('first_name')) < 4:
-            self.add_error('first_name', 'needs to be 4 or more')
+        if len(cleaned_data.get('first_name')) < 2:
+            self.add_error('first_name', 'needs to be 2 or more')
         return cleaned_data
     
 class CreateCompanyForm(ModelForm):

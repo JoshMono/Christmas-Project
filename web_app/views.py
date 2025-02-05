@@ -25,6 +25,7 @@ def create_person(request):
         context = {"form": form}
             
         return render(request, "web_app/create_person.html", context=context)
+    
     elif request.method == "POST":
         form = CreatePersonForm(data=request.POST)
         context = {"form": form}
@@ -64,7 +65,13 @@ def delete_person(request, person_id):
 def view_companies(request):
     context = {}
     companies = Company.objects.all()
-    context["companies"] = companies
+    company_list = []
+    for i in companies:
+        people = i.person_set.all()
+        number_of_people = len(people)
+        company_list.append([i, number_of_people])
+
+    context["companies"] = company_list
     return render(request, "web_app/view_companies.html", context=context)
 
 
