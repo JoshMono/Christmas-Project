@@ -1,53 +1,73 @@
-<html>
+{% extends 'web_app/layout.html' %}
 
-<body>
-    <h2>Company</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Industry</th>
+{% load static %}
 
-        </tr>
-        <tr>
-            <td>
-                {{company.name}}
-            </td>
-            <td>
-                {{company.get_industry_display}}
-            </td>
-        </tr>
+{% block title %}View Company{% endblock %}
+
+{% block content %}
+
+<h2>Company</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th style="width: 70%;">Name</th>
+                <th style="width: 30%;">Industry</th> 
+
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr class="align-items-center">
+                <td style="width: 70%;">{{ company.name }}</td>
+                <td style="width: 30%;">{{ company.get_industry_display }}</td> 
+                
+            </tr>
+            
+        </tbody>
     </table>
+</div>
 
-    
+
+<div style="margin-top: 80px;">
     <h2>People</h2>
-    <table>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
 
-        </tr>
-        {% for person in people %}
-        <tr>
-            <td>
-                {{person.first_name}}
-            </td>
-            <td>
-                {{person.last_name}}
-            </td>
-            <td>
-                {{person.email}}
-            </td>
-        </tr>
-        {% endfor %}
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for person in people %}
+                <tr>
+                    <td>
+                        {{person.first_name}}
+                    </td>
+                    <td>
+                        {{person.last_name}}
+                    </td>
+                    <td>
+                        {{person.email}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
     </table>
-    <form action="" method="POST">
-        {% csrf_token %}
+    </div>
+</div>
+
+<form action="" method="POST" class="p-4 border rounded shadow-sm">
+    <h3>Add Person</h1>
+    {% csrf_token %}
+    <div class="mb-3">
         {{ link_person_to_company_form }}
-        <button type="submit">Add</button>
-    </form>
-    
+    </div>
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>
 
-</body>
-
-</html>
+{% endblock %}

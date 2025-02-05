@@ -7,7 +7,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def home(request):
-    return HttpResponse("Hello, Django!")
+    context = {}
+    return render(request, "web_app/index.html", context=context)
 
 def view_people(request):
     context = {}

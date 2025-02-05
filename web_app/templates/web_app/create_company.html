@@ -1,11 +1,21 @@
-<html>
 
-    <body>
-        <form action="" method="POST">
-            {% csrf_token %}
+{% extends 'web_app/layout.html' %}
+
+{% load static %}
+
+{% block title %}Create Company{% endblock %}
+
+{% block content %}
+
+    <form action="" method="POST" class="p-4 border rounded shadow-sm">
+        {% csrf_token %}
+        <h3>Company</h3>
+        <div class="mb-3">
             {{form}}
+        </div>
 
-            <button type="submit">Create</button>
-        </form>
-    </body>
-</html>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  
+
+{% endblock %}

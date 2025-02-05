@@ -1,36 +1,40 @@
-<html>
+{% extends 'web_app/layout.html' %}
 
-    <body>
-        <table>
+{% load static %}
+
+{% block title %}View Companies{% endblock %}
+
+{% block content %}
+
+<a class="btn btn-success btn-sm" href="/create_company">Create Company</a> 
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered mt-4">
+        <thead class="table-dark">
             <tr>
-                <th>Name</th>
-                <th>Industry</th>
-
+                <th style="width: 70%;">Name</th>
+                <th style="width: 20%;">Industry</th> 
+                <th class="w-auto">Actions</th>
             </tr>
+        </thead>
+        <tbody>
             {% for company in companies %}
-            <tr>
-                <td>
-                    {{company.name}}
-                </td>
-                <td>
-                    {{company.get_industry_display}}
-                </td>
-                
-                <td>
-                    <a href="/view_company/{{company.id}}">view</a>
-                </td>
-                <td>
-                    <a href="/edit_company/{{company.id}}">edit</a>
-                </td>
-                <td>
-                    <a href="/delete_company/{{company.id}}">delete</a>
+            <tr class="align-items-center">
+                <td style="width: 70%;">{{ company.name }}</td>
+                <td style="width: 20%;">{{ company.get_industry_display }}</td> 
+                <td class="w-auto text-end">
+                    <div class="d-flex gap-2 justify-content-end">
+                        <a class="btn btn-primary btn-sm" href="/view_company/{{company.id}}">View</a>
+                        <a class="btn btn-warning btn-sm" href="/edit_company/{{company.id}}">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/delete_company/{{company.id}}">Delete</a>
+                    </div>
                 </td>
             </tr>
             {% endfor %}
-            
-        </table>
-        <a href="/create_company">Create</a>
-            
-    </body>
+        </tbody>
+    </table>
+</div>
 
-</html>
+
+            
+{% endblock %}

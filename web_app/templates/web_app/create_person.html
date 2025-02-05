@@ -1,11 +1,19 @@
-<html>
+{% extends 'web_app/layout.html' %}
 
-    <body>
-        <form action="" method="POST">
-            {% csrf_token %}
+{% load static %}
+
+{% block title %}Create Person{% endblock %}
+
+{% block content %}
+
+
+    <form action="" method="POST" class="p-4 border rounded shadow-sm">
+        {% csrf_token %}
+        <h3>Person</h3>
+        <div class="mb-3">
             {{form}}
-
-            <button type="submit">Create</button>
-        </form>
-    </body>
-</html>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+{% endblock %}

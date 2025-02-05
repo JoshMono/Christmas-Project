@@ -8,7 +8,6 @@ from .models import Person, Company
 class CreatePersonForm(ModelForm):
     
     class Meta:
-        
         model = Person
         fields = ["id", "first_name", "last_name", "email", "company"]
     
