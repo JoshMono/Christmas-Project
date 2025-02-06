@@ -78,7 +78,8 @@ def view_companies(request):
 def view_company(request, company_id):
     company = Company.objects.get(id=company_id)
     people = company.person_set.all()
-    all_people = Person.objects.exclude(company=company)
+    all_people = Person.objects.filter(company=None)
+
     context = {}
     context["company"] = company
     context["people"] = people

@@ -23,3 +23,4 @@ class Person(models.Model):
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
+    
