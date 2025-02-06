@@ -12,7 +12,7 @@ def home(request):
 
 def view_people(request):
     context = {}
-    people = Person.objects.all()
+    people = Person.objects.all().select_related('company')
     context["people"] = people
     
         
@@ -64,12 +64,12 @@ def delete_person(request, person_id):
 
 def view_companies(request):
     context = {}
-    companies = Company.objects.all()
+    companies = Company.objects.all().prefetch_related('people')
     company_list = []
-    for i in companies:
-        people = i.person_set.all()
+    for company in companies:
+        people = company.people.all()
         number_of_people = len(people)
-        company_list.append([i, number_of_people])
+        company_list.append((company, number_of_people))
 
     context["companies"] = company_list
     return render(request, "web_app/view_companies.html", context=context)
@@ -77,7 +77,7 @@ def view_companies(request):
 
 def view_company(request, company_id):
     company = Company.objects.get(id=company_id)
-    people = company.person_set.all()
+    people = company.people.all()
     all_people = Person.objects.filter(company=None)
 
     context = {}

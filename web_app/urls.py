@@ -1,5 +1,6 @@
 from django.urls import path
 from web_app import views
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path("", views.home, name="index"),
@@ -13,6 +14,5 @@ urlpatterns = [
     path("create_company/", views.create_company, name="create_company"),
     path("edit_company/<company_id>", views.edit_company, name="edit_company"),
     path("delete_company/<company_id>", views.delete_company, name="delete_company"),
-
 
 ]

@@ -19,7 +19,7 @@ class Person(models.Model):
     first_name = models.TextField(verbose_name="First Name")
     last_name = models.TextField(verbose_name="Last Name")
     email = models.EmailField(verbose_name="Email")
-    company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True)
+    company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True, related_name="people")
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
